@@ -94,6 +94,9 @@ jobs:
         ./scripts/feeds update -a && ./scripts/feeds install -a        
         chmod +x $GITHUB_WORKSPACE/$DIY_SH && $GITHUB_WORKSPACE/$DIY_SH
 
+        cd ./package
+        chmod +x $GITHUB_WORKSPACE/scripts/Plugins.sh && $GITHUB_WORKSPACE/scripts/Plugins.sh
+
     - name: 导入补丁和配置
       run: |
         [ -e files ] && mv files openwrt/files
