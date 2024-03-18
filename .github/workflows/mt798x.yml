@@ -92,9 +92,7 @@ jobs:
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
         cd openwrt
-        
-        #chmod +x $GITHUB_WORKSPACE/scripts/preset-clash-core1.sh && $GITHUB_WORKSPACE/scripts/preset-clash-core1.sh
-        
+        chmod +x $GITHUB_WORKSPACE/$CLASH_CORE && $GITHUB_WORKSPACE/$CLASH_CORE
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
         #git fetch https://github.com/padavanonly/immortalwrt-mt798x
@@ -138,8 +136,6 @@ jobs:
     - name: 下载文件
       run: |
         cd openwrt
-        
-        chmod +x $GITHUB_WORKSPACE/$CLASH_CORE && $GITHUB_WORKSPACE/$CLASH_CORE
         make defconfig
         make download -j8 V=10
         find dl -size -1024c -exec ls -l {} \;
