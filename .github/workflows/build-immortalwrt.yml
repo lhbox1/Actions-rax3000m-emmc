@@ -82,7 +82,12 @@ jobs:
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
         cd openwrt
-        ./scripts/feeds update -a && ./scripts/feeds install -a        
+        
+        ./scripts/feeds update -a && ./scripts/feeds install -a
+        echo >> feeds.conf.default
+        echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
+        ./scripts/feeds update istore
+        ./scripts/feeds install -d y -p istore luci-app-store
         chmod +x $GITHUB_WORKSPACE/$DIY_SH && $GITHUB_WORKSPACE/$DIY_SH
 
     - name: 导入补丁和配置
@@ -107,7 +112,9 @@ jobs:
     - name: 下载文件
       run: |
         cd openwrt
+        
         chmod +x $GITHUB_WORKSPACE/$CLASH_CORE && $GITHUB_WORKSPACE/$CLASH_CORE
+        
         make defconfig
         make download -j8 V=10
         find dl -size -1024c -exec ls -l {} \;
