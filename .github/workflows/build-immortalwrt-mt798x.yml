@@ -83,18 +83,23 @@ jobs:
         mixkey: 'openwrt21-cortexa53'
         prefix: ${{ github.workspace }}/openwrt
 
+
+        
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
         cd openwrt
+        chmod +x $GITHUB_WORKSPACE/CMCC-RAX3000M-EMMC/preset-clash-core.sh && $GITHUB_WORKSPACE/CMCC-RAX3000M-EMMC/preset-clash-core.sh
+        
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
         #git fetch https://github.com/padavanonly/immortalwrt-mt798x
         #git merge FETCH_HEAD
-        ./scripts/feeds update -a && ./scripts/feeds install -a        
+        ./scripts/feeds update -a && ./scripts/feeds install -a
+        echo >> feeds.conf.default
+        echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
+        ./scripts/feeds update istore
+        ./scripts/feeds install -d y -p istore luci-app-store
         chmod +x $GITHUB_WORKSPACE/$DIY_SH && $GITHUB_WORKSPACE/$DIY_SH
-
-        cd ./package
-        chmod +x $GITHUB_WORKSPACE/scripts/Plugins.sh && $GITHUB_WORKSPACE/scripts/Plugins.sh
 
     - name: 导入补丁和配置
       run: |
