@@ -90,7 +90,7 @@ jobs:
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
         cd openwrt
-        chmod +x $GITHUB_WORKSPACE/CMCC-RAX3000M-EMMC/preset-clash-core.sh && $GITHUB_WORKSPACE/CMCC-RAX3000M-EMMC/preset-clash-core.sh
+        chmod +x $GITHUB_WORKSPACE/scripts/preset-clash-core.sh && $GITHUB_WORKSPACE/scripts/preset-clash-core.sh
         
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
