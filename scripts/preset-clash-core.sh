@@ -9,6 +9,11 @@
 # Blog: https://mlapp.cn
 #=================================================
 
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
+
+
+
 
 # 预置openclash内核
 mkdir -p files/etc/openclash/core
@@ -85,7 +90,6 @@ wget -qO- $COUNTRY_LITE_URL > files/etc/openclash/Country.mmdb
 #rm -rf temp.zip
 
 #下载使用master版本passwall
-
 wget  -qO- https://github.com/xiaorouji/openwrt-passwall/archive/main.zip > temp1.zip
 unzip -q temp1.zip
 cp -r openwrt-passwall-main/luci-app-passwall package/
@@ -94,32 +98,55 @@ rm -rf openwrt-passwall-main
 
 
 
-#下载使用passwall依赖kenzok8/small库
-wget  -qO- https://github.com/kenzok8/small/archive/master.zip > temp2.zip
+#下载使用helloworld依赖库ssr
+wget  -qO- https://github.com/fw876/helloworld/archive/master.zip > temp2.zip
 unzip -q temp2.zip
 
-cp -r small-master/luci-app-ssr-plus package/
-cp -r small-master/shadow-tls package/
+#rm -rf feeds/packages/net/xray-core
+
+cp -r helloworld-master/luci-app-ssr-plus package/
+cp -r helloworld-master/shadow-tls package/
+#cp -r helloworld-master/xray-core package/
+
 
 rm -rf temp2.zip
-rm -rf small-master
+rm -rf helloworld-master
 
 #插件库
-wget  -qO- https://github.com/lhbox1/pakg/archive/main.zip > temp3.zip
-unzip -q temp3.zip
+#wget  -qO- https://github.com/lhbox1/pakg/archive/main.zip > temp3.zip
+#unzip -q temp3.zip
 #cp -r pakg-main/luci-app-adguardhome package/
-cp -r pakg-main/luci-app-mosdns package/
-cp -r pakg-main/v2dat package/
-rm -rf temp3.zip
-rm -rf pakg-main
+#cp -r pakg-main/luci-app-mosdns package/
+#cp -r pakg-main/v2dat package/
+#rm -rf temp3.zip
+#rm -rf pakg-main
 
 
-#下载使用sbwml版本alist
-#wget  -qO- https://github.com/sbwml/luci-app-alist/archive/master.zip > alist.zip
-#unzip -q alist.zip
-#cp -r luci-app-alist-master/luci-app-alist package/
-#rm -rf alist.zip
-#rm -rf luci-app-alist-master
+#alist更新
+wget  -qO- https://github.com/sbwml/luci-app-alist/archive/master.zip > alist.zip
+unzip -q alist.zip
+rm -rf feeds/luci/applications/luci-app-alist
+cp -r luci-app-alist-master/luci-app-alist package/
+
+rm -rf alist.zip
+rm -rf luci-app-alist-master
+
+
+
+#下载使用sbwml版本mosdns
+wget  -qO- https://github.com/sbwml/luci-app-mosdns/archive/v5.zip > mosdns.zip
+unzip -q mosdns.zip
+
+rm -rf feeds/packages/net/mosdns
+rm -rf feeds/packages/net/v2ray-geodata
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
+cp -r luci-app-mosdns-5/luci-app-mosdns package/
+cp -r luci-app-mosdns-5/v2dat package/
+cp -r luci-app-mosdns-5/mosdns package/
+rm -rf mosdns.zip
+rm -rf luci-app-mosdns-5
+
 
 
 #备用
