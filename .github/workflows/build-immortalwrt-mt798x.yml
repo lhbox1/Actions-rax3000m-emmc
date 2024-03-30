@@ -35,7 +35,7 @@ on:
 env:
   #REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   #237
-  REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x.git
+  REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   FREE_DISK_SH: scripts/free_disk_space.sh
   ENV_SH: scripts/environment.sh
   DIY_SH: scripts/diy.sh
