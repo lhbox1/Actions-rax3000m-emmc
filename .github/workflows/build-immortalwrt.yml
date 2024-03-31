@@ -80,7 +80,7 @@ jobs:
         prefix: ${{ github.workspace }}/openwrt
 
     
-    - name: 下载文件
+    - name: 更新插件
       run: |
         cd openwrt
 
@@ -89,6 +89,7 @@ jobs:
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
         cd openwrt
+        ./scripts/feeds update -a && ./scripts/feeds install -a
         ##istore包
         echo >> feeds.conf.default
         echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
