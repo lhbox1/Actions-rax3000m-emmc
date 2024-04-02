@@ -17,6 +17,10 @@ permissions: write-all
 # 开启写权限，防止无法上传到release
 
 on:
+  #自动编译：每天早上4点
+  schedule:
+    - cron: 0 20 * * 2
+  #手动编译
   workflow_dispatch:
     inputs:
       USE_MTWIFI_CFG:
