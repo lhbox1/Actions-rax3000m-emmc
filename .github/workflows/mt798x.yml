@@ -18,8 +18,8 @@ permissions: write-all
 
 on:
   #自动编译：每天早上4点
-  schedule:
-    - cron: 0 20 * * 2
+ # schedule:
+   # - cron: 0 20 * * 2
   #手动编译
   workflow_dispatch:
     inputs:
@@ -47,7 +47,7 @@ env:
   DIY_SH: scripts/diy.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
-  UPLOAD_RELEASE: true
+  UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
 
 jobs:
