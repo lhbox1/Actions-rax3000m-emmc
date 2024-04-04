@@ -9,10 +9,14 @@
 # Blog: https://mlapp.cn
 #=================================================
 
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
+
+
+
 
 # 预置openclash内核
 mkdir -p files/etc/openclash/core
-
 
 # dev内核
 #CLASH_DEV_URL="https://github.com/vernesong/OpenClash/raw/core/dev/dev/clash-linux-arm64.tar.gz"
@@ -47,8 +51,8 @@ CLASH_META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/maste
 #wget -qO- $CLASH_TUN_URL > temp.gz && gunzip  temp.gz && mv temp files/etc/openclash/core/clash_tun
 #wget -qO- $CLASH_META_URL > temp.tar.gz && tar xzf temp.tar.gz && mv clash files/etc/openclash/core/clash_meta && rm temp.tar.gz
 
-wget -qO- $CLASH_DEV_URL | tar  xOz > files/etc/openclash/core/clash
-wget -qO- $CLASH_TUN_URL | gunzip -c > files/etc/openclash/core/clash_tun
+#wget -qO- $CLASH_DEV_URL | tar  xOz > files/etc/openclash/core/clash
+#wget -qO- $CLASH_TUN_URL | gunzip -c > files/etc/openclash/core/clash_tun
 wget -qO- $CLASH_META_URL | tar xOz > files/etc/openclash/core/clash_meta
 
 # 给内核权限
@@ -78,44 +82,71 @@ wget -qO- $COUNTRY_LITE_URL > files/etc/openclash/Country.mmdb
 #wget -qO- $chnr6_custom_url > files/etc/openclash/china_ip6_route.ipset
 #wget -qO- $cndomain_custom_url > files/etc/openclash/accelerated-domains.china.conf
 
-#下载使用master版本openclash
-wget  -qO- https://github.com/vernesong/OpenClash/archive/master.zip > temp.zip
+下载使用master版本openclash
+wget -qO- https://github.com/vernesong/OpenClash/archive/master.zip > temp.zip
 unzip -q temp.zip
 cp -r OpenClash-master/luci-app-openclash package/
 rm -rf OpenClash-master
 rm -rf temp.zip
 
 #下载使用master版本passwall
-wget  -qO- https://github.com/xiaorouji/openwrt-passwall/archive/main.zip > temp1.zip
+wget -qO- https://github.com/xiaorouji/openwrt-passwall/archive/main.zip > temp1.zip
 unzip -q temp1.zip
+rm -rf feeds/luci/applications/luci-app-passwall
 cp -r openwrt-passwall-main/luci-app-passwall package/
 rm -rf temp1.zip
 rm -rf openwrt-passwall-main
 
 
 
-#下载使用passwall依赖kenzok8/small库
-#wget  -qO- https://github.com/kenzok8/small/archive/master.zip > temp2.zip
-#unzip -q temp2.zip
-#cp -r small-master/luci-app-ssr-plus package/
-#cp -r small-master/shadow-tls package/
+#下载使用helloworld依赖库ssr
+wget -qO- https://github.com/fw876/helloworld/archive/master.zip > temp2.zip
+unzip -q temp2.zip
+
+#rm -rf feeds/packages/net/xray-core
+rm -rf feeds/luci/applications/luci-app-ssr-plus
+cp -r helloworld-master/luci-app-ssr-plus package/
+cp -r helloworld-master/shadow-tls package/
+#cp -r helloworld-master/xray-core package/
 
 
-#rm -rf temp2.zip
-#rm -rf small-master
+rm -rf temp2.zip
+rm -rf helloworld-master
 
 #插件库
+#wget  -qO- https://github.com/lhbox1/pakg/archive/main.zip > temp3.zip
+#unzip -q temp3.zip
+#cp -r pakg-main/luci-app-adguardhome package/
+#cp -r pakg-main/luci-app-mosdns package/
+#cp -r pakg-main/v2dat package/
+#rm -rf temp3.zip
+#rm -rf pakg-main
 
-wget  -qO- https://github.com/lhbox1/pakg/archive/main.zip > temp3.zip
-unzip -q temp3.zip
 
-cp -r pakg-main/luci-app-adguardhome package/
-cp -r pakg-main/luci-app-mosdns package/
-cp -r pakg-main/v2dat package/
+#alist更新
+wget -qO- https://github.com/sbwml/luci-app-alist/archive/master.zip > alist.zip
+unzip -q alist.zip
+rm -rf feeds/luci/applications/luci-app-alist
+cp -r luci-app-alist-master/luci-app-alist package/
+
+rm -rf alist.zip
+rm -rf luci-app-alist-master
 
 
-rm -rf temp3.zip
-rm -rf pakg-main
+
+#下载使用sbwml版本mosdns
+wget  -qO- https://github.com/sbwml/luci-app-mosdns/archive/v5.zip > mosdns.zip
+unzip -q mosdns.zip
+
+#rm -rf feeds/packages/net/mosdns
+rm -rf feeds/packages/net/v2ray-geodata
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
+cp -r luci-app-mosdns-5/luci-app-mosdns package/
+cp -r luci-app-mosdns-5/v2dat package/
+#cp -r luci-app-mosdns-5/mosdns package/
+rm -rf mosdns.zip
+rm -rf luci-app-mosdns-5
 
 
 
