@@ -91,7 +91,7 @@ jobs:
       run: |
         cd openwrt
         #自定义插件
-        chmod +x $GITHUB_WORKSPACE/scripts/preset-clash-core.sh && $GITHUB_WORKSPACE/scripts/preset-clash-core.sh
+        chmod +x $GITHUB_WORKSPACE/scripts/preset-clash-core1.sh && $GITHUB_WORKSPACE/scripts/preset-clash-core1.sh
 
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
