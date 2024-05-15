@@ -11,6 +11,8 @@ CONFIG_TARGET_PROFILE="DEVICE_cmcc_rax3000m"
 CONFIG_PACKAGE_autosamba=y
 CONFIG_PACKAGE_luci-app-ksmbd=n
 CONFIG_PACKAGE_luci-app-wrtbwmon=n
+CONFIG_PACKAGE_luci-app-usbmodem=n
+
 
 CONFIG_PACKAGE_luci-app-quickstart=y
 
