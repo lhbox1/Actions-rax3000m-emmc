@@ -124,13 +124,13 @@ rm -rf helloworld-master
 
 
 #alist更新
-wget -qO- https://github.com/sbwml/luci-app-alist/archive/master.zip > alist.zip
-unzip -q alist.zip
-rm -rf feeds/luci/applications/luci-app-alist
-cp -r luci-app-alist-master/luci-app-alist package/
+#wget -qO- https://github.com/sbwml/luci-app-alist/archive/master.zip > alist.zip
+#unzip -q alist.zip
+#rm -rf feeds/luci/applications/luci-app-alist
+#cp -r luci-app-alist-master/luci-app-alist package/
 
-rm -rf alist.zip
-rm -rf luci-app-alist-master
+#rm -rf alist.zip
+#rm -rf luci-app-alist-master
 
 
 
