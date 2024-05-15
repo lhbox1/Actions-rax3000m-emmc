@@ -40,7 +40,7 @@ env:
   #REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x.git
   FREE_DISK_SH: scripts/free_disk_space.sh
   ENV_SH: scripts/environment.sh
-  DIY_SH: scripts/diy.sh
+  DIY_SH: scripts/diy2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
