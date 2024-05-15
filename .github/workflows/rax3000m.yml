@@ -87,12 +87,6 @@ jobs:
         mixkey: 'openwrt21-cortexa53'
         prefix: ${{ github.workspace }}/openwrt
 
-    - name: 自定义脚本
-      run: |
-        cd openwrt
-        #自定义插件
-        chmod +x $GITHUB_WORKSPACE/scripts/preset-clash-core1.sh && $GITHUB_WORKSPACE/scripts/preset-clash-core1.sh
-
     - name: 更新 & 安装 feeds & 执行脚本
       run: |
         cd openwrt
@@ -121,8 +115,16 @@ jobs:
         
         
         ./scripts/feeds update -a && ./scripts/feeds install -a 
-        chmod +x $GITHUB_WORKSPACE/$DIY_SH && $GITHUB_WORKSPACE/$DIY_SH
+        
 
+    - name: 自定义脚本
+      run: |
+        cd openwrt
+        chmod +x $GITHUB_WORKSPACE/$DIY_SH && $GITHUB_WORKSPACE/$DIY_SH
+        #自定义插件
+        cd ./package
+        chmod +x $GITHUB_WORKSPACE/scripts/Plugins.sh && $GITHUB_WORKSPACE/scripts/Plugins.sh
+        
     - name: 导入补丁和配置
       run: |
         [ -e files ] && mv files openwrt/files
