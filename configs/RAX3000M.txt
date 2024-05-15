@@ -1,6 +1,10 @@
 ###型号切换
 CONFIG_TARGET_mediatek=y
 CONFIG_TARGET_mediatek_mt7981=y
+#
+CONFIG_TARGET_mediatek_mt7981_DEVICE_cmcc_rax3000m=y
+CONFIG_TARGET_PROFILE="DEVICE_cmcc_rax3000m"
+#
 #CONFIG_TARGET_mediatek_mt7981_DEVICE_cmcc_rax3000m-emmc=y
 #CONFIG_TARGET_PROFILE="DEVICE_cmcc_rax3000m-emmc"
 ##rax3000m-emmc需取消autosamba
@@ -9,10 +13,8 @@ CONFIG_PACKAGE_luci-app-ksmbd=n
 CONFIG_PACKAGE_luci-app-wrtbwmon=n
 
 CONFIG_PACKAGE_luci-app-quickstart=y
-CONFIG_PACKAGE_luci-app-diskman=y
-#
-CONFIG_TARGET_mediatek_mt7981_DEVICE_cmcc_rax3000m=y
-CONFIG_TARGET_PROFILE="DEVICE_cmcc_rax3000m"
+
+
 
 ## 主题皮肤
 CONFIG_PACKAGE_luci-theme-bootstrap=y
@@ -23,36 +25,26 @@ CONFIG_PACKAGE_luci-app-argon-config=y
 #路由器插件自定义区Applications
 
 CONFIG_PACKAGE_luci-app-adguardhome=y
-CONFIG_PACKAGE_adguardhome=y
-CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y
-CONFIG_PACKAGE_luci-app-adguardhome_INCLUDE_binary=y
+#CONFIG_PACKAGE_adguardhome=y
+#CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y
+#CONFIG_PACKAGE_luci-app-adguardhome_INCLUDE_binary=y
 
 ## 插件
 #CONFIG_PACKAGE_luci-app-istorex=y
-#CONFIG_PACKAGE_luci-app-quickstart=y
-#CONFIG_PACKAGE_luci-app-store=y
+CONFIG_PACKAGE_luci-app-quickstart=y
+CONFIG_PACKAGE_luci-app-store=y
 
 CONFIG_PACKAGE_luci-app-alist=y
-CONFIG_PACKAGE_alist=y
+#CONFIG_PACKAGE_alist=y
 CONFIG_PACKAGE_luci-app-openclash=y
 
 CONFIG_PACKAGE_luci-app-ddns-go=y
 CONFIG_PACKAGE_ddns-go=y
 
-CONFIG_DEFAULT_luci-app-samba4=y
-CONFIG_PACKAGE_samba4-libs=y
-CONFIG_PACKAGE_samba4-server=y
-CONFIG_SAMBA4_SERVER_WSDD2=y
-CONFIG_SAMBA4_SERVER_NETBIOS=y
-CONFIG_SAMBA4_SERVER_AVAHI=y
-CONFIG_SAMBA4_SERVER_VFS=y
-
 CONFIG_PACKAGE_luci-app-aria2=y
 CONFIG_PACKAGE_luci-app-autoreboot=y
 
-
-
-
+CONFIG_PACKAGE_luci-app-diskman=y
 CONFIG_PACKAGE_luci-app-diskman_INCLUDE_btrfs_progs=y
 CONFIG_PACKAGE_luci-app-diskman_INCLUDE_lsblk=y
 
@@ -62,7 +54,7 @@ CONFIG_PACKAGE_luci-app-easymesh=y
 
 #CONFIG_PACKAGE_luci-app-eqos-mtk=y
 
-CONFIG_PACKAGE_luci-app-filetransfer=y
+
 CONFIG_PACKAGE_luci-app-firewall=y
 
 
@@ -70,14 +62,14 @@ CONFIG_PACKAGE_luci-app-guest-wifi=y
 
 CONFIG_PACKAGE_luci-app-mtwifi-cfg=y
 
-CONFIG_PACKAGE_luci-app-mwan3=y
+#CONFIG_PACKAGE_luci-app-mwan3=y
 CONFIG_PACKAGE_iptables-mod-tproxy=y
 CONFIG_PACKAGE_iptables-mod-extra=y
 CONFIG_PACKAGE_luci-app-opkg=y
 
 
 #CONFIG_PACKAGE_luci-app-qbittorrent=y
-
+CONFIG_PACKAGE_luci-app-filetransfer=y
 CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-webui=y
 CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-ng=y
 
@@ -90,12 +82,10 @@ CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-ng=y
 
 
 
-CONFIG_PACKAGE_luci-app-syncdial=y
+#CONFIG_PACKAGE_luci-app-syncdial=y
 
 CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_TURBOACC_INCLUDE_NO_FASTPATH=y
-
-
 CONFIG_PACKAGE_luci-app-turboacc-mtk=y
 
 
@@ -106,7 +96,7 @@ CONFIG_PACKAGE_luci-app-usb-printer=y
 CONFIG_PACKAGE_luci-app-vsftpd=y
 
 CONFIG_PACKAGE_luci-app-webd_INCLUDE_WEBD_BINARY=y
-CONFIG_PACKAGE_luci-app-wifischedule=y
+#CONFIG_PACKAGE_luci-app-wifischedule=y
 CONFIG_PACKAGE_luci-app-wireguard=y
 
 
