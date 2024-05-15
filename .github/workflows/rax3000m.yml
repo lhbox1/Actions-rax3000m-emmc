@@ -93,26 +93,6 @@ jobs:
         
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
-        #git fetch https://github.com/padavanonly/immortalwrt-mt798x
-        #git merge FETCH_HEAD
-        #git clone  https://github.com/shuishihan/luci-app-easymesh.git package/feeds/luci/luci-app-easymesh
-        #git clone  https://github.com/rufengsuixing/luci-app-adguardhome.git package/feeds/luci/luci-app-adguardhome
-        ./scripts/feeds update -a && ./scripts/feeds install -a
-        ##istore包
-        echo >> feeds.conf.default
-        #echo 'src-git helloworld https://github.com/fw876/helloworld;master' >> feeds.conf.default
-        
-        echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
-        ./scripts/feeds update istore
-        ./scripts/feeds install -d y -p istore luci-app-store
-        
-        echo 'src-git nas https://github.com/linkease/nas-packages.git;master' >> feeds.conf.default
-        echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >> feeds.conf.default
-        ./scripts/feeds update nas nas_luci
-        ./scripts/feeds install -a -p nas
-        ./scripts/feeds install -a -p nas_luci
-        
-        
         
         ./scripts/feeds update -a && ./scripts/feeds install -a 
         
