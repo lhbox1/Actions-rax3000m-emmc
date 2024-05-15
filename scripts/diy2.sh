@@ -6,6 +6,8 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.15.1/g" ./package/base-files/files/bi
 #删除冲突插件
 #rm -rf $(find ./feeds/luci/ -type d -regex ".*\(argon\|design\|openclash\|passwall\|ssr-plus\).*")
 rm -rf $(find ./feeds/luci/ -type d -regex ".*\(ddns-go\|openclash\|passwall\|alist\|ssr-plus\|easymesh\).*")
+
+rm -rf package/istore
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
 #修改默认主机名
@@ -29,3 +31,8 @@ git clone https://github.com/shuishihan/luci-app-easymesh.git package/luci-app-e
 
 #alist
 git clone https://github.com/lmq8267/luci-app-alist package/luci-app-alist
+
+##
+git clone https://github.com/linkease/istore package/nas-istore
+git clone https://github.com/linkease/nas-packages.git package/nas-istore1
+git clone https://github.com/linkease/nas-packages-luci.git package/nas-istore2
