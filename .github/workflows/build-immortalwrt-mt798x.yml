@@ -121,7 +121,10 @@ jobs:
 
 
         
-        ./scripts/feeds update -a && ./scripts/feeds install -a        
+        ./scripts/feeds update -a && ./scripts/feeds install -a
+    - name: 自定义脚本
+      run: |
+        cd openwrt
         chmod +x $GITHUB_WORKSPACE/$DIY_SH && $GITHUB_WORKSPACE/$DIY_SH
 
     - name: 设置无线控制界面样式
