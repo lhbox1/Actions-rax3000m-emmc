@@ -83,12 +83,6 @@ jobs:
         ccache: 'true'
         mixkey: 'openwrt21-cortexa53'
         prefix: ${{ github.workspace }}/openwrt
-
-    - name: 导入补丁和配置
-      run: |
-        [ -e files ] && mv files openwrt/files
-        cat configs/rax3000m-emmc_mtksdk.config >> openwrt/.config
-
     - name: 更新脚本
       run: |
         cd openwrt
@@ -126,6 +120,11 @@ jobs:
         cd openwrt
         chmod +x $GITHUB_WORKSPACE/$DIY_SH && $GITHUB_WORKSPACE/$DIY_SH
 
+    - name: 导入补丁和配置
+      run: |
+        [ -e files ] && mv files openwrt/files
+        cat configs/rax3000m-emmc_mtksdk.config >> openwrt/.config
+        
     - name: 设置无线控制界面样式
       if: env.USE_MTWIFI_CFG == 'true'
       run: |
