@@ -40,8 +40,8 @@ on:
         type: boolean
 
 env:
-  REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
-  #REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x.git
+  #REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
+  REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x.git
   FREE_DISK_SH: scripts/free_disk_space.sh
   ENV_SH: scripts/environment.sh
   DIY_SH: scripts/diy.sh
@@ -105,32 +105,17 @@ jobs:
         git config --global user.name "github-actions[bot]"
         #git fetch https://github.com/padavanonly/immortalwrt-mt798x
         #git merge FETCH_HEAD
-        #git clone  https://github.com/shuishihan/luci-app-easymesh.git package/feeds/luci/luci-app-easymesh
-        #git clone  https://github.com/rufengsuixing/luci-app-adguardhome.git package/feeds/luci/luci-app-adguardhome
+       
         ./scripts/feeds update -a && ./scripts/feeds install -a
-        ##istore包
-        echo >> feeds.conf.default
-        #echo 'src-git helloworld https://github.com/fw876/helloworld;master' >> feeds.conf.default
         
-        echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
-        ./scripts/feeds update istore
-        ./scripts/feeds install -d y -p istore luci-app-store
-        
-        echo 'src-git nas https://github.com/linkease/nas-packages.git;master' >> feeds.conf.default
-        echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >> feeds.conf.default
-        ./scripts/feeds update nas nas_luci
-        ./scripts/feeds install -a -p nas
-        ./scripts/feeds install -a -p nas_luci
-        
-        
-        
-        ./scripts/feeds update -a && ./scripts/feeds install -a 
-        chmod +x $GITHUB_WORKSPACE/$DIY_SH && $GITHUB_WORKSPACE/$DIY_SH
 
     - name: 导入补丁和配置
       run: |
         [ -e files ] && mv files openwrt/files
         cat configs/mtwifi-cfg.config.txt >> openwrt/.config
+
+        cd openwrt
+        chmod +x $GITHUB_WORKSPACE/scripts/diy.sh && $GITHUB_WORKSPACE/scripts/diy.sh
 
     - name: 设置无线控制界面样式
       if: env.USE_MTWIFI_CFG == 'true'
