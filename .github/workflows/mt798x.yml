@@ -112,7 +112,7 @@ jobs:
     - name: 导入补丁和配置
       run: |
         [ -e files ] && mv files openwrt/files
-        cat configs/mtwifi-cfg.config.txt >> openwrt/.config
+        cat configs/rax3000m-emmc_mtksdk.config >> openwrt/.config
 
         cd openwrt
         chmod +x $GITHUB_WORKSPACE/scripts/diy.sh && $GITHUB_WORKSPACE/scripts/diy.sh
